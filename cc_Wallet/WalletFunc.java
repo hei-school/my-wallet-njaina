@@ -1,4 +1,4 @@
-package com.wallet;
+
 public class WalletFunc {
   public static class Result {
       boolean success;

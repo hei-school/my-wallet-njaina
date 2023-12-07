@@ -1,4 +1,4 @@
-package com.wallet;
+
 import java.util.Scanner;
 
 public class Wallet {
