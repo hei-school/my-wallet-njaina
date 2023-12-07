@@ -1,5 +1,5 @@
-from .wallet_func import WalletFunc
-from .prompt_sync import prompt_sync
+from wallet_func import WalletFunc
+from prompt_sync import prompt_sync
 
 class Wallet:
     def __init__(self):

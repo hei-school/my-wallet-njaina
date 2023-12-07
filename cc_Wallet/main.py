@@ -1,4 +1,4 @@
-from .wallet import Wallet
+from wallet import Wallet
 
 def main():
     user_wallet = Wallet()
