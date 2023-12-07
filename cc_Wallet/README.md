@@ -37,9 +37,6 @@ This is a simple command-line application for managing a wallet with owners and 
      cd cc_Wallet
 
 3. Usage
-* Complile all java file
+* Run the application
     ```bash
-   javac *.java
-* Run the main java app
-    ```bash
-    java Main
+    python main.py
