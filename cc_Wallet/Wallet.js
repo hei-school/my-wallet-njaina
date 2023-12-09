@@ -7,18 +7,20 @@ class Wallet {
     }
 
     exit() {
-      console.log('Exiting the application. Goodbye!');
-      process.exit();
-  }
+        console.log('Exiting the application. Goodbye!');
+        process.exit();
+    }
+
+    displayMenu(title, options) {
+        console.log(`\n${title}:`);
+        options.forEach((option, index) => console.log(`${index + 1}. ${option}`));
+    }
+
     async mainMenu() {
         let continueFlag = true;
 
         while (continueFlag) {
-            console.log('\nMain Menu:');
-            console.log('1. Manage PIT');
-            console.log('2. Manage Wallet');
-            console.log('3. Display All Items');
-            console.log('4. Exit');
+            this.displayMenu('Main Menu', ['Manage PIT', 'Manage Wallet', 'Display All Items', 'Exit']);
 
             const option = await promptSync('Choose an option (1/2/3/4): ');
 
@@ -42,37 +44,17 @@ class Wallet {
     }
 
     async managePIT() {
-        console.log('\nManage PIT Menu:');
-        console.log('1. Add NIC');
-        console.log('2. Add Banking Card');
-        console.log('3. Add Driving Licence');
-        console.log('4. Add Visit Card');
-        console.log('5. Add Identification Photo');
-        console.log('6. Back to Main Menu');
+        const pitOptions = ['Add NIC', 'Add Banking Card', 'Add Driving Licence', 'Add Visit Card', 'Add Identification Photo', 'Back to Main Menu'];
+        this.displayMenu('Manage PIT Menu', pitOptions);
 
         const pitOption = await promptSync('Choose a PIT option (1/2/3/4/5/6): ');
 
-        switch (pitOption) {
-            case '1':
-                await this.addPIT('NIC');
-                break;
-            case '2':
-                await this.addPIT('Banking Card');
-                break;
-            case '3':
-                await this.addPIT('Driving Licence');
-                break;
-            case '4':
-                await this.addPIT('Visit Card');
-                break;
-            case '5':
-                await this.addPIT('Identification Photo');
-                break;
-            case '6':
-                console.log('Returning to Main Menu.');
-                break;
-            default:
-                console.log('Invalid PIT option. Please choose 1, 2, 3, 4, 5, or 6.');
+        if (pitOption >= 1 && pitOption <= pitOptions.length - 1) {
+            await this.addPIT(pitOptions[pitOption - 1].substring(4));
+        } else if (pitOption === pitOptions.length) {
+            console.log('Returning to Main Menu.');
+        } else {
+            console.log('Invalid PIT option. Please choose a number between 1 and 6.');
         }
     }
 
@@ -82,42 +64,62 @@ class Wallet {
     }
 
     displayAllItems() {
-        console.log('\nAll Items in the Wallet:');
+      console.log('\nAll Items in the Wallet:');
+  
+      let totalBalance = 0;
+      let lastAction = '"added"';
+  
+      this.items.forEach((item, index) => {
+          if (item.type === 'pit') {
+              console.log(`-------------------PIT-----------------------`);
+              console.log(`PIT ${index + 1}: ${item.pitType}`);
+              console.log(`------------------MONEY----------------------`);
+          } else if (item.type === 'money') {
+              const action = item.amount > 0 ? 'added' : '"withdrawn"';
+              lastAction = action;
 
-        this.items.forEach((item, index) => {
-            if (item.type === 'pit') {
-                console.log(`PIT ${index + 1}: ${item.pitType}`);
-            } else if (item.type === 'money') {
-                const action = item.amount > 0 ? 'added' : 'withdrawn';
-                console.log(`Money ${index + 1}: $${Math.abs(item.amount).toFixed(2)} ${action}`);
-            }
-        });
-    }
+              console.log(`Money ${index + 1}: Ar${item.amount.toFixed(2)} ${action}`);
+              console.log(`---------------------------------------------`);
+  
+              totalBalance += item.amount;
+          }
+      });
+  
+      console.log(`\nTotal Balance: Ar${totalBalance.toFixed(2)} ${lastAction}`);
+  }
+  
 
     async manageWallet() {
-        console.log('\nManage money:');
-        console.log('1. Add Money');
-        console.log('2. View Balance');
-        console.log('3. Withdraw Money');
-        console.log('4. Back to Main Menu');
+        const walletOptions = ['Add Money', 'View Balance', 'Withdraw Money', 'Back to Main Menu'];
+        this.displayMenu('Manage Wallet', walletOptions);
 
         const walletOption = await promptSync('Choose a Wallet option (1/2/3/4): ');
 
-        switch (walletOption) {
-            case '1':
+        if (walletOption >= 1 && walletOption <= walletOptions.length - 1) {
+            await this.executeWalletOption(walletOptions[walletOption - 1]);
+        } else if (walletOption === walletOptions.length) {
+            console.log('Returning to Main Menu.');
+        } else {
+            console.log('Invalid Wallet option. Please choose a number between 1 and 4.');
+        }
+    }
+
+    async executeWalletOption(option) {
+        switch (option) {
+            case 'Add Money':
                 await this.addMoney();
                 break;
-            case '2':
+            case 'View Balance':
                 await this.viewMoney();
                 break;
-            case '3':
+            case 'Withdraw Money':
                 await this.withdrawMoney();
                 break;
-            case '4':
+            case 'Back to Main Menu':
                 console.log('Returning to Main Menu.');
                 break;
             default:
-                console.log('Invalid Wallet option. Please choose 1, 2, 3, or 4.');
+                console.log('Invalid Wallet option. Please choose Add Money, View Balance, Withdraw Money, or Back to Main Menu.');
         }
     }
 
