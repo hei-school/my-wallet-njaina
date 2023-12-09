@@ -20,10 +20,16 @@ This is a simple command-line application for managing a wallet with owners and 
     - Choose this option to exit the wallet checking application.
 
 ## Getting Started
-
+``*`` You can choose any language between ``Javascript``, ``Java``, ``Python`` and ``Typescript``
 ### Prerequisites
-
+*<u>For javascript and typescript</u>*
 - Node.js installed on your machine.
+
+*<u>For java</u>*
+- Java installed on your machine.
+
+*<u>For python</u>*
+- Python installed on your machine.
 
 ### Installation
 
@@ -37,6 +43,4 @@ This is a simple command-line application for managing a wallet with owners and 
      cd cc_Wallet
 
 3. Usage
-* Run the application
-    ```bash
-    python main.py
+* Follow the link 
