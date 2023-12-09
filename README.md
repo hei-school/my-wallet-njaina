@@ -1,9 +1,19 @@
 # Wallet Management Application
 
-This is a simple command-line application for managing a wallet with owners and their actual money balances.
+This is a simple command-line application for managing a wallet with owners and their actual money balances and also some personal identification tools he have.
 
-## Features
+# Some features
+## ``I`` - ***``PIT (stand for:Personal Identification Tools)``***
+**Functionality:**
+`` You can put your CIN in one of the pockets in the wallet``
+* #### ``1`` - ***``NIC``***
+* #### ``2`` - ***``Bancking card``***
+* #### ``3`` - ***``Driving licence``***
+* #### ``4`` - ***``Visit card``***
+* #### ``5`` - ***``Identification Photo``***
 
+## ``II`` - ***``Money storage``***
+#### ``1`` - ***``Money``***
 1. ***Add money:***
    - Enter the amount you want to add to your wallet.
    - The application will display a success message along with the updated balance.
@@ -16,16 +26,16 @@ This is a simple command-line application for managing a wallet with owners and 
    - The application checks if the withdrawal amount is valid (not exceeding the current balance).
    - Displays a success message if the withdrawal is successful, along with the updated balance.
    - If the withdrawal amount is invalid, an error message is shown.
-4. ***4. Exit:***
+4. ***Exit:***
     - Choose this option to exit the wallet checking application.
 
-## Getting Started
+# Getting Started
 
-### Prerequisites
+### ``Prerequisites``
 
 - Node.js installed on your machine.
 
-### Installation
+### ``Installation``
 
 1. Clone the repository:
 
@@ -36,7 +46,7 @@ This is a simple command-line application for managing a wallet with owners and 
     ```bash
      cd cc_Wallet
 
-3. Usage
-* Run the application's bootstrap
+3. Usage: 
+``  Run the application's bootstrap``
     ```bash
    node main.js
