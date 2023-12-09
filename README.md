@@ -1,9 +1,19 @@
 # Wallet Management Application
 
-This is a simple command-line application for managing a wallet with owners and their actual money balances.
+This is a simple command-line application for managing a wallet with owners and their actual money balances and also some personal identification tools he have.
 
-## Features
+# Some features
+## ``I`` - ***``PIT (stand for:Personal Identification Tools)``***
+**Functionality:**
+`` You can put your CIN in one of the pockets in the wallet``
+* #### ``1`` - ***``NIC``***
+* #### ``2`` - ***``Bancking card``***
+* #### ``3`` - ***``Driving licence``***
+* #### ``4`` - ***``Visit card``***
+* #### ``5`` - ***``Identification Photo``***
 
+## ``II`` - ***``Money storage``***
+#### ``1`` - ***``Money``***
 1. ***Add money:***
    - Enter the amount you want to add to your wallet.
    - The application will display a success message along with the updated balance.
@@ -16,7 +26,7 @@ This is a simple command-line application for managing a wallet with owners and 
    - The application checks if the withdrawal amount is valid (not exceeding the current balance).
    - Displays a success message if the withdrawal is successful, along with the updated balance.
    - If the withdrawal amount is invalid, an error message is shown.
-4. ***4. Exit:***
+4. ***Exit:***
     - Choose this option to exit the wallet checking application.
 
 ## Getting Started
@@ -31,7 +41,7 @@ This is a simple command-line application for managing a wallet with owners and 
 *<u>For python</u>*
 - Python installed on your machine.
 
-### Installation
+### Main installation
 
 1. Clone the repository:
 
@@ -42,5 +52,10 @@ This is a simple command-line application for managing a wallet with owners and 
     ```bash
      cd cc_Wallet
 
-3. Usage
-* Follow the link 
+## ``Specific installation``
+* Follow the link bellow to install any language you want to use
+* [Javascript](README.feature-javascript.md)
+
+* [Java](README.feature/java.md)
+* [Python](REAMDE.feautre-python.md)
+* [Typescript](README.feature-typescript.md)
