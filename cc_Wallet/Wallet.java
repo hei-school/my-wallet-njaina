@@ -1,13 +1,26 @@
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Wallet {
+    private List<String> items;
     private double actualMoney;
     private WalletFunc walletFunc;
 
     public Wallet() {
+        this.items = new ArrayList<>();
         this.actualMoney = 0;
         this.walletFunc = new WalletFunc();
+    }
+
+    public void displayAllItems() {
+        System.out.println("\nAll Items in the Wallet:");
+
+        for (String item : items) {
+            System.out.println(item);
+        }
+
+        System.out.println("\nTotal Balance: Ar" + actualMoney);
     }
 
     public void addMoney() {
@@ -27,6 +40,7 @@ public class Wallet {
             } while (amount < 0);
 
             WalletFunc.Result result = walletFunc.addMoney(amount, actualMoney);
+            items.add("Money " + items.size() + 1 + ": Ar" + amount + " added");
             displayMessage(result.messages);
             actualMoney = result.newBalance;
         }
@@ -49,14 +63,17 @@ public class Wallet {
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Please enter a valid number for the amount.");
-                    amount = -1; // Set to -1 to force the loop to continue
+                    amount = -1; 
                 }
             } while (amount < 0);
 
             WalletFunc.Result result = walletFunc.withdrawMoney(amount, actualMoney);
-            displayMessage(result.messages);
             if (result.success) {
+                items.add("Money " + items.size() + 1 + ": Ar" + amount + " withdrawn");
+                displayMessage(result.messages);
                 actualMoney = result.newBalance;
+            } else {
+                displayMessage(result.messages);
             }
         }
     }
@@ -76,9 +93,10 @@ public class Wallet {
                 System.out.println("1. Add Money");
                 System.out.println("2. View Balance");
                 System.out.println("3. Withdraw Money");
-                System.out.println("4. Exit");
+                System.out.println("4. Display All Items");
+                System.out.println("5. Exit");
 
-                System.out.print("Choose an option (1/2/3/4): ");
+                System.out.print("Choose an option (1/2/3/4/5): ");
                 String option = scanner.nextLine();
 
                 switch (option) {
@@ -92,11 +110,14 @@ public class Wallet {
                         withdrawMoney();
                         break;
                     case "4":
+                        displayAllItems();
+                        break;
+                    case "5":
                         displayMessage("Exiting wallet management. Goodbye!");
                         continueFlag = false;
                         break;
                     default:
-                        displayMessage("Invalid option. Please choose 1, 2, 3, or 4.");
+                        displayMessage("Invalid option. Please choose 1, 2, 3, 4, or 5.");
                 }
             }
         }
