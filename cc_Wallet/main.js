@@ -5,7 +5,8 @@ async function main() {
 
   const userWallet = new Wallet();
 
-  await userWallet.manageWallet();
+  userWallet.mainMenu();
+
 
   console.log('Thank you for using the Wallet Management System!');
 }

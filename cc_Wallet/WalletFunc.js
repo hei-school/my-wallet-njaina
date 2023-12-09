@@ -1,39 +1,66 @@
-class WalletFunc {
-  addMoney(amount, currentBalance) {
-    return {
-      success: true,
-      messages: [
-        'Money added successfully!',
-        `Current balance: $${(currentBalance + amount).toFixed(2)}`
-      ],
-      newBalance: currentBalance + amount
-    };
+function addPITToWallet(items, pitType) {
+  const messages = [];
+
+  if (pitType) {
+      items.push({ type: 'pit', pitType });
+      messages.push(`PIT (${pitType}) added successfully to the wallet.`);
+  } else {
+      messages.push('Invalid PIT type. PIT not added to the wallet.');
   }
 
-  viewMoney(currentBalance) {
-    return {
-      success: true,
-      messages: [`Current balance: $${currentBalance.toFixed(2)}`]
-    };
-  }
-
-  withdrawMoney(amount, currentBalance) {
-    if (currentBalance >= amount && amount >= 0) {
-      return {
-        success: true,
-        messages: [
-          'Money withdrawn successfully!',
-          `Current balance: $${(currentBalance - amount).toFixed(2)}`
-        ],
-        newBalance: currentBalance - amount
-      };
-    } else {
-      return {
-        success: false,
-        messages: ['<!>Invalid withdrawal amount. Cannot withdraw more than the current balance.']
-      };
-    }
-  }
+  return { messages };
 }
 
-module.exports = WalletFunc;
+function addMoneyToWallet(items, amount) {
+  const messages = [];
+
+  if (!isNaN(amount) && amount > 0) {
+      items.push({ type: 'money', amount });
+      messages.push(`$${amount.toFixed(2)} added successfully to the wallet.`);
+  } else {
+      messages.push('Invalid amount. Money not added to the wallet.');
+  }
+
+  return { messages };
+}
+
+function viewMoneyInWallet(items) {
+  const messages = [];
+  let totalMoney = 0;
+
+  items.forEach(item => {
+      if (item.type === 'money') {
+          totalMoney += item.amount;
+      }
+  });
+
+  messages.push(`Total Money in the wallet: $${totalMoney.toFixed(2)}`);
+  return { messages };
+}
+
+function withdrawMoneyFromWallet(items, amount) {
+  const messages = [];
+  let totalMoney = 0;
+
+  items.forEach(item => {
+      if (item.type === 'money') {
+          totalMoney += item.amount;
+      }
+  });
+
+  if (!isNaN(amount) && amount > 0 && amount <= totalMoney) {
+      items.push({ type: 'money', amount: -amount });
+      messages.push(`$${amount.toFixed(2)} withdrawn successfully from the wallet.`);
+  } else {
+      messages.push('Invalid amount. Money not withdrawn from the wallet.');
+  }
+
+  return { messages };
+}
+
+module.exports = {
+  addPITToWallet,
+  addMoneyToWallet,
+  viewMoneyInWallet,
+  withdrawMoneyFromWallet
+};

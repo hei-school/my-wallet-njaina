@@ -45,7 +45,6 @@ This is a simple command-line application for managing a wallet with owners and 
 2. Navigate to the project directory:
     ```bash
      cd cc_Wallet
-
 3. Usage: 
 ``  Run the application's bootstrap``
     ```bash
