@@ -6,6 +6,10 @@ class Wallet {
         this.items = [];
     }
 
+    exit() {
+      console.log('Exiting the application. Goodbye!');
+      process.exit();
+  }
     async mainMenu() {
         let continueFlag = true;
 
@@ -29,8 +33,7 @@ class Wallet {
                     this.displayAllItems();
                     break;
                 case '4':
-                    console.log('Exiting the application. Goodbye!');
-                    continueFlag = false;
+                    this.exit();
                     break;
                 default:
                     console.log('Invalid option. Please choose 1, 2, 3, or 4.');
@@ -92,7 +95,7 @@ class Wallet {
     }
 
     async manageWallet() {
-        console.log('\nManage Wallet Menu:');
+        console.log('\nManage money:');
         console.log('1. Add Money');
         console.log('2. View Balance');
         console.log('3. Withdraw Money');
