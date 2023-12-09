@@ -20,7 +20,7 @@ class Wallet {
         let continueFlag = true;
 
         while (continueFlag) {
-            this.displayMenu('Main Menu', ['Manage PIT', 'Manage Wallet', 'Display All Items', 'Exit']);
+            this.displayMenu('Main Menu', ['Manage PIT', 'Manage Money', 'Display All Items', 'Exit']);
 
             const option = await promptSync('Choose an option (1/2/3/4): ');
 
