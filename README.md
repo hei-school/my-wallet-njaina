@@ -55,7 +55,6 @@ This is a simple command-line application for managing a wallet with owners and 
 ## ``Specific installation``
 * Follow the link bellow to install any language you want to use
 * [Javascript](README.feature-javascript.md)
-
 * [Java](README.feature/java.md)
 * [Python](REAMDE.feautre-python.md)
 * [Typescript](README.feature-typescript.md)
