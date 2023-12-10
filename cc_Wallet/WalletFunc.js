@@ -16,7 +16,7 @@ function addMoneyToWallet(items, amount) {
 
   if (!isNaN(amount) && amount > 0) {
       items.push({ type: 'money', amount });
-      messages.push(`$${amount.toFixed(2)} added successfully to the wallet.`);
+      messages.push(`Ar${amount.toFixed(2)} added successfully to the wallet.`);
   } else {
       messages.push('Invalid amount. Money not added to the wallet.');
   }
@@ -34,7 +34,7 @@ function viewMoneyInWallet(items) {
       }
   });
 
-  messages.push(`Total Money in the wallet: $${totalMoney.toFixed(2)}`);
+  messages.push(`Total Money in the wallet: Ar${totalMoney.toFixed(2)}`);
   return { messages };
 }
 
@@ -50,7 +50,7 @@ function withdrawMoneyFromWallet(items, amount) {
 
   if (!isNaN(amount) && amount > 0 && amount <= totalMoney) {
       items.push({ type: 'money', amount: -amount });
-      messages.push(`$${amount.toFixed(2)} withdrawn successfully from the wallet.`);
+      messages.push(`Ar${amount.toFixed(2)} withdrawn successfully from the wallet.`);
   } else {
       messages.push('Invalid amount. Money not withdrawn from the wallet.');
   }

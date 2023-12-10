@@ -6,11 +6,6 @@ class Wallet {
         this.items = [];
     }
 
-    exit() {
-        console.log('Exiting the application. Goodbye!');
-        process.exit();
-    }
-
     displayMenu(title, options) {
         console.log(`\n${title}:`);
         options.forEach((option, index) => console.log(`${index + 1}. ${option}`));
@@ -29,7 +24,7 @@ class Wallet {
                     await this.managePIT();
                     break;
                 case '2':
-                    await this.manageWallet();
+                    await this.manageMoney();
                     break;
                 case '3':
                     this.displayAllItems();
@@ -89,11 +84,11 @@ class Wallet {
   }
   
 
-    async manageWallet() {
+    async manageMoney() {
         const walletOptions = ['Add Money', 'View Balance', 'Withdraw Money', 'Back to Main Menu'];
         this.displayMenu('Manage Wallet', walletOptions);
 
-        const walletOption = await promptSync('Choose a Wallet option (1/2/3/4): ');
+        const walletOption = await promptSync('Choose any option (1/2/3/4): ');
 
         if (walletOption >= 1 && walletOption <= walletOptions.length - 1) {
             await this.executeWalletOption(walletOptions[walletOption - 1]);
@@ -116,7 +111,9 @@ class Wallet {
                 await this.withdrawMoney();
                 break;
             case 'Back to Main Menu':
+                console.log("------*---------*------");
                 console.log('Returning to Main Menu.');
+                console.log("------*---------*------");
                 break;
             default:
                 console.log('Invalid Wallet option. Please choose Add Money, View Balance, Withdraw Money, or Back to Main Menu.');
@@ -140,6 +137,10 @@ class Wallet {
         const amount = parseFloat(amountInput);
         const result = walletFunc.withdrawMoneyFromWallet(this.items, amount);
         result.messages.forEach(message => console.log(message));
+    }
+    exit() {
+        console.log('Exiting the application. Goodbye!');
+        process.exit();
     }
 }
 
