@@ -5,7 +5,7 @@ This is a simple command-line application for managing a wallet with owners and 
 # Some features
 ## ``I`` - ***``PIT (stand for:Personal Identification Tools)``***
 **Functionality:**
-`` You can put any PIT you want in one of the pockets in the wallet``
+`` You can put any PIT you want in one of the pockets in the wallet if there is still any place``
 * #### ``1`` - ***``NIC``***
 * #### ``2`` - ***``Bancking card``***
 * #### ``3`` - ***``Driving licence``***
