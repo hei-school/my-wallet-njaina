@@ -1,4 +1,4 @@
-### ``Installation``
+## ``Installation``
 *After cloning the project in your local machine*
 
 1. Navigate to the project directory:
