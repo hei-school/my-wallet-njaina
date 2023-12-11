@@ -1,6 +1,7 @@
 
 ### ``Installation``
-*After cloning the project in your local machine*
+*After cloning the project in your local machine and going to the directory cc_wallet*
+
 
 #### ``Usage``|
 * Complile all java file
