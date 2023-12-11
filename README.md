@@ -1,6 +1,8 @@
-## Installation
 
-#### ``Usage
+### ``Installation``
+*After cloning the project in your local machine*
+
+#### ``Usage``|
 * Complile all java file
     ```bash
    javac *.java
