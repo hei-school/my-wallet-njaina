@@ -1,5 +1,4 @@
 from wallet_func import WalletFunc
-import asyncio
 
 class Wallet:
     def __init__(self):
@@ -100,11 +99,3 @@ class Wallet:
     def exit(self):
         print('Exiting the application. Goodbye!')
         exit()
-
-async def run():
-    wallet = Wallet()
-    while True:
-        await wallet.main_menu()
-
-if __name__ == "__main__":
-    asyncio.run(run())

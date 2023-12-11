@@ -1,5 +1,5 @@
-from wallet import Wallet
 import asyncio
+from wallet import Wallet
 
 async def run():
     wallet = Wallet()
