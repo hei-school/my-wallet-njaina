@@ -57,4 +57,4 @@ This is a simple command-line application for managing a wallet with owners and 
 * [Javascript](https://github.com/hei-school/my-wallet-njaina/blob/feature/javascript/README.md)
 * [Java](https://github.com/hei-school/my-wallet-njaina/blob/feature/java/README.md)
 * [Python](https://github.com/hei-school/my-wallet-njaina/blob/feature/python/README.md)
-* [Typescript](README.feature-typescript.md)
+* [Typescript](https://github.com/hei-school/my-wallet-njaina/blob/feature/typescript/README.md)
