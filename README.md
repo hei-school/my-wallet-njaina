@@ -1,5 +1,6 @@
-## ``Installation``
-*After cloning the project in your local machine*
+### ``Installation``
+*After cloning the project in your local machine and going to the directory cc_wallet*
+
 
 1. Navigate to the project directory:
    ```bash
