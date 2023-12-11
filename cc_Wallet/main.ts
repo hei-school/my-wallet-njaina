@@ -1,6 +1,4 @@
-// main.ts
-import { run } from './app';
+import { Wallet } from './wallet';
 
-if (require.main === module) {
-    run();
-}
+const wallet = new Wallet();
+wallet.run();

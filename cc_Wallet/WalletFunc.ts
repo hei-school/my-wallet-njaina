@@ -1,4 +1,3 @@
-// wallet_func.ts
 import { WalletItem, WalletFuncResult } from './types';
 
 export class WalletFunc {
@@ -6,7 +5,7 @@ export class WalletFunc {
         const messages: string[] = [];
 
         if (pitType) {
-            items.push({ type: 'pit', pitType });
+            items.push({ type: 'pit', pit_type: pitType });
             messages.push(`PIT (${pitType}) added successfully to the wallet.`);
         } else {
             messages.push('Invalid PIT type. PIT not added to the wallet.');
@@ -30,7 +29,9 @@ export class WalletFunc {
 
     static viewMoneyInWallet(items: WalletItem[]): WalletFuncResult {
         const messages: string[] = [];
-        const totalMoney = items.reduce((sum, item) => (item.type === 'money' ? sum + item.amount! : sum), 0);
+        const totalMoney = items
+            .filter(item => item.type === 'money')
+            .reduce((sum, item) => sum + (item.amount || 0), 0);
 
         messages.push(`Total Money in the wallet: Ar${totalMoney.toFixed(2)}`);
         return { messages };
@@ -38,7 +39,9 @@ export class WalletFunc {
 
     static withdrawMoneyFromWallet(items: WalletItem[], amount: number): WalletFuncResult {
         const messages: string[] = [];
-        const totalMoney = items.reduce((sum, item) => (item.type === 'money' ? sum + item.amount! : sum), 0);
+        const totalMoney = items
+            .filter(item => item.type === 'money')
+            .reduce((sum, item) => sum + (item.amount || 0), 0);
 
         if (typeof amount === 'number' && amount > 0 && amount <= totalMoney) {
             items.push({ type: 'money', amount: -amount });
@@ -47,6 +50,6 @@ export class WalletFunc {
             messages.push('Invalid amount. Money not withdrawn from the wallet.');
         }
 
-        return { messages, success: messages.length === 1 }; // Assuming success when only one message is present
+        return { messages };
     }
 }

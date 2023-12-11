@@ -1,10 +1,15 @@
 export interface WalletItem {
     type: string;
-    pitType?: string;
+    pit_type?: string;
     amount?: number;
 }
 
 export interface WalletFuncResult {
     messages: string[];
-    success?: boolean;
+}
+
+export interface MainOptions {
+    'Manage PIT': string[];
+    'Manage Wallet': string[];
+    'Main Menu': string[];
 }
