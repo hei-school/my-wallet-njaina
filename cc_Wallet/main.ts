@@ -1,4 +1,8 @@
 import { Wallet } from './wallet';
 
-const wallet = new Wallet();
-wallet.run();
+async function run(): Promise<void> {
+    const wallet = new Wallet();
+    await wallet.run();
+}
+
+run();
