@@ -1,8 +1,10 @@
 from wallet import Wallet
+import asyncio
 
-def main():
-    user_wallet = Wallet()
-    user_wallet.manage_wallet()
+async def run():
+    wallet = Wallet()
+    while True:
+        await wallet.main_menu()
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(run())
